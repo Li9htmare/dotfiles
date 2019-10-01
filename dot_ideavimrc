@@ -1,0 +1,13 @@
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set surround
+
+nnoremap <silent> <Esc> :nohlsearch<CR>
+
+let mapleader = ' '
+
+nnoremap <Leader>v <C-V>
+nnoremap <Leader>w <C-W>
