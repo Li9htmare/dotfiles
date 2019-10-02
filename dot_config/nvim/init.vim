@@ -81,4 +81,4 @@ nnoremap <Leader>ww :Windows<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" vim: syntax=vim
+" vim: filetype=vim

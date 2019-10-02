@@ -11,3 +11,5 @@ let mapleader = ' '
 
 nnoremap <Leader>v <C-V>
 nnoremap <Leader>w <C-W>
+
+" vim: filetype=vim
