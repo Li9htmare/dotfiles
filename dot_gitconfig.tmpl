@@ -1,13 +1,10 @@
 [alias]
     # clone
-    cl = clone --recurse-submodules --jobs 4
+    cl = clone
 
     # commit
     ca = "!f() { git add --all && git commit \"$@\"; }; f"
     reca = "!f() { git add --all && git commit --amend \"${@:---no-edit}\"; }; f"
-
-    # config
-    ec = config --edit --global
 
     # checkout
     co = checkout
@@ -22,20 +19,13 @@
     # status
     st = status --branch --short
 
-[color "diff"]
-    meta = yellow bold
-
 [core]
     autocrlf = input
-    excludesfile = ~/.gitignore
     pager = diff-so-fancy | less --tabs=4 -RFX
     preloadindex = true
 
 [fetch]
     prune = true
-
-[include]
-    path = ~/.gitconfig.local
 
 [push]
     default = simple
