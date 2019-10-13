@@ -1,0 +1,42 @@
+source <(antibody init)
+antibody bundle mafredri/zsh-async
+# sindresorhus/pure must be sourced after mafredri/zsh-async
+antibody bundle sindresorhus/pure
+antibody bundle zsh-users/zsh-autosuggestions
+antibody bundle zsh-users/zsh-completions
+
+setopt INTERACTIVE_COMMENTS
+
+eval $(dircolors)
+
+source ~/.zsh/alias.zsh
+source ~/.zsh/completion.zsh
+source ~/.zsh/history.zsh
+source ~/.zsh/zle.zsh
+
+
+source ~/.fzf.zsh
+
+export FZF_COMPLETION_TRIGGER=''
+export FZF_CTRL_R_OPTS='--exact'
+
+bindkey '^T' fzf-completion
+bindkey '^I' "${fzf_default_completion}"
+
+export PURE_PROMPT_SYMBOL='λ'
+
+source ${HOMEBREW_PREFIX}/etc/profile.d/z.sh
+
+xrdb -merge ~/.Xresources
+
+
+function pyenv {
+    unset -f pyenv
+    eval "$(pyenv init -)"
+    pyenv "$@"
+}
+
+# zsh-users/zsh-syntax-highlighting must be sourced at the very bottom of .zshrc
+antibody bundle zsh-users/zsh-syntax-highlighting
+
+# vim: syntax=zsh

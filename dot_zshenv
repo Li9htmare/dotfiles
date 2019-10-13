@@ -1,0 +1,49 @@
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+export BLOCK_SIZE=human-readable
+
+export PIPENV_VENV_IN_PROJECT=1
+
+if [[ -d /home/linuxbrew/.linuxbrew ]]; then
+    export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+else
+    export HOMEBREW_PREFIX=~/.linuxbrew
+fi
+export HOMEBREW_CELLAR=${HOMEBREW_PREFIX}/Cellar
+export HOMEBREW_REPOSITORY=${HOMEBREW_PREFIX}/Homebrew
+
+typeset -U fpath
+fpath=(
+    ~/share/zsh/site-functions
+    ${HOMEBREW_PREFIX}/share/zsh/site-functions
+    ${fpath}
+)
+
+typeset -TU INFOPATH infopath
+infopath=(
+    ${HOMEBREW_PREFIX}/share/info
+    ${infopath}
+)
+
+typeset -U manpath
+manpath=(
+    ${HOMEBREW_PREFIX}/share/man
+    ${manpath}
+)
+
+typeset -U path
+path=(
+    ~/bin
+    ${HOMEBREW_PREFIX}/bin
+    ${HOMEBREW_PREFIX}/sbin
+    ${path}
+    ~/.local/bin
+    ~/.yarn/bin
+)
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
+
+# vim: filetype=zsh
