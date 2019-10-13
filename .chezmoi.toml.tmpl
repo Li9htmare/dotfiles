@@ -1,5 +1,8 @@
 {{- $email := promptString "email" -}}
 {{- $name := promptString "name" -}}
+
+sourceDir = "{{ .chezmoi.homedir }}/.dotfiles"
+
 [data]
     email = "{{ $email }}"
     name = "{{ $name }}"
