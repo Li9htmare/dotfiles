@@ -23,7 +23,7 @@ brew install \
     twpayne/taps/chezmoi \
     zsh
 
-[[ -d ~/.dotfiles ]] || chezmoi --source ~/.dotfiles init https://github.com/Li9htmare/dotfiles
+[[ -d ~/.dotfiles ]] || chezmoi --source ~/.dotfiles init git@github.com:Li9htmare/dotfiles.git
 chezmoi diff
 echo 'Press any key to continue or Ctrl+C to abort'
 read -n 1 -s
