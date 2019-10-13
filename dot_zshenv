@@ -4,8 +4,6 @@ export PAGER='less'
 
 export BLOCK_SIZE=human-readable
 
-export PIPENV_VENV_IN_PROJECT=1
-
 if [[ -d /home/linuxbrew/.linuxbrew ]]; then
     export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
 else
