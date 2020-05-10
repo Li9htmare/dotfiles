@@ -16,10 +16,12 @@ if ! type chezmoi &> /dev/null; then
     bash <( \
         curl --fail --location --silent --show-error \
             https://git.io/chezmoi \
-    ) -b ~/bin
+    ) -b ${HOME}/bin
 fi
 
-[[ -d ~/.dotfiles ]] || chezmoi --source ~/.dotfiles init git@github.com:Li9htmare/dotfiles.git
+if [[ ! -d ${HOME}/.dotfiles ]]; then
+    chezmoi --source ${HOME}/.dotfiles init https://github.com/Li9htmare/dotfiles.git
+fi
 if ! chezmoi verify; then
     chezmoi diff
     echo 'Press any key to continue or Ctrl+C to abort'
@@ -36,7 +38,6 @@ if ! type brew &> /dev/null; then
 fi
 
 brew bundle --global --no-lock
-# ${HOMEBREW_PREFIX}/opt/fzf/install --all --no-lock
 
 
 if ! type pyenv &> /dev/null; then

@@ -15,17 +15,10 @@ source ~/.zsh/history.zsh
 source ~/.zsh/zle.zsh
 
 
-source ~/.fzf.zsh
-
-export FZF_COMPLETION_TRIGGER=''
-export FZF_CTRL_R_OPTS='--exact'
-
-bindkey '^T' fzf-completion
-bindkey '^I' "${fzf_default_completion}"
+source $(brew --prefix)/etc/profile.d/z.sh
+source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 
 export PURE_PROMPT_SYMBOL='λ'
-
-source ${HOMEBREW_PREFIX}/etc/profile.d/z.sh
 
 xrdb -merge ~/.Xresources
 
