@@ -22,6 +22,8 @@ export PURE_PROMPT_SYMBOL='λ'
 
 xrdb -merge ~/.Xresources
 
+eval "$(pyenv init -)"
+
 # zsh-users/zsh-syntax-highlighting must be sourced at the very bottom of .zshrc
 antibody bundle zsh-users/zsh-syntax-highlighting
 

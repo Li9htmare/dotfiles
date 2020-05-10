@@ -45,7 +45,14 @@ if [[ ! -d ~/.tmux/plugins/tpm ]]; then
 fi
 
 
+if [[ $(python --version) != 'Python 3.'* ]]; then
+    echo 'Please change default python to python3!'
+    exit 1
+fi
+
+
 # sudo apt install libbz2-dev
+# sudo apt install libffi-dev
 # sudo apt install libreadline-dev
 # sudo apt install libsqlite3-dev
 # sudo apt install libssl-dev
@@ -62,7 +69,7 @@ fi
 # sudo apt install python3-pip
 # sudo apt install python3-venv
 if ! type pipx &> /dev/null; then
-    pip3 install --user pipx
+    pip install --user pipx
 fi
 pipx install black
 pipx install flake8
