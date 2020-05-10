@@ -5,23 +5,24 @@ set -o nounset
 
 alias curl='curl --fail --location --show-error --silent'
 
-readonly latest_tag=$(
-    jq --raw-output \
-        '.tag_name' \
-        <(curl https://api.github.com/repos/be5invis/Iosevka/releases/latest)
+latest_tag=$(
+    curl --head  --output /dev/null --write-out %{url_effective} \
+        https://github.com/be5invis/Iosevka/releases/latest
 )
+latest_tag=${latest_tag:t}
+echo ${latest_tag}
 
 for download_option in iosevka-ss09 iosevka-term-ss09; do
     local download_path=~/.local/share/fonts/${download_option}-${latest_tag#v}
     if [[ ! -d ${download_path} ]]; then
         mkdir --parents ${download_path:h}
         for old_download_path in $(
-            fd --max-depth 1 --type d "^${download_option}-\d+\.\d+\.\d+$" ${download_path:h}
+            fd --max-depth 1 --type d "^${download_option}-" ${download_path:h}
         ); do
             echo Removing ${old_download_path}
             rm --recursive ${old_download_path}
         done
-        echo Downloading to ${download_path}
+        echo Downloading ${download_path:t} to ${download_path:h}
         unzip -jq \
             =(curl https://github.com/be5invis/Iosevka/releases/download/${latest_tag}/${download_path:t}.zip) \
             'ttf/*.ttf' \
@@ -29,4 +30,3 @@ for download_option in iosevka-ss09 iosevka-term-ss09; do
         fc-cache
     fi
 done
-

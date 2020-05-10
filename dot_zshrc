@@ -29,13 +29,6 @@ source ${HOMEBREW_PREFIX}/etc/profile.d/z.sh
 
 xrdb -merge ~/.Xresources
 
-
-function pyenv {
-    unset -f pyenv
-    eval "$(pyenv init -)"
-    pyenv "$@"
-}
-
 # zsh-users/zsh-syntax-highlighting must be sourced at the very bottom of .zshrc
 antibody bundle zsh-users/zsh-syntax-highlighting
 
