@@ -40,6 +40,13 @@ fi
 brew bundle --global --no-lock
 
 
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+    git clone https://github.com/tmux-plugins/tpm.git ${HOME}/.tmux/plugins/tpm
+fi
+
+
+# sudo apt install libbz2-dev
+# sudo apt install libreadline-dev
 if ! type pyenv &> /dev/null; then
     bash <( \
         curl --fail --location --silent --show-error \
@@ -49,6 +56,9 @@ if ! type pyenv &> /dev/null; then
 fi
 
 
+# sudo apt install python3-dev
+# sudo apt install python3-pip
+# sudo apt install python3-venv
 if ! type pipx &> /dev/null; then
     pip3 install --user pipx
 fi
@@ -56,3 +66,5 @@ pipx install black
 pipx install flake8
 pipx install glances
 pipx install poetry
+
+poetry config virtualenvs.in-project true
