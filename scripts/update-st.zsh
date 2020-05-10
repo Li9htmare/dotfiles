@@ -14,8 +14,8 @@ cd ${build_path}
 git fetch
 if [[ $(git merge-base master origin/master) != $(git rev-parse origin/master) ]]; then
     git pull
-    if [[ -f /usr/lib/x86_64-linux-gnu/pkgconfig/fontconfig.pc ]]; then
-        export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+    if [[ -f /usr/lib64/pkgconfig/fontconfig.pc ]]; then
+        export PKG_CONFIG_PATH=/usr/lib64/pkgconfig
     fi
     # sudo apt install libxft-dev
     make PREFIX=~/install/st install

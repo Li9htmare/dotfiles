@@ -8,6 +8,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'benekastah/neomake'
 
+Plug 'cespare/vim-toml'
+
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'junegunn/fzf'
