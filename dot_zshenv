@@ -29,6 +29,10 @@ typeset -U manpath
 manpath=(
     ${HOMEBREW_PREFIX}/share/man
     ${manpath}
+    # If $MANPATH is set, manpath displays its value rather than determining it
+    # on the fly. If the colon comes at the end of the value in the variable,
+    # then the determined list is appended to the content of the variable.
+    ''
 )
 
 typeset -U path
