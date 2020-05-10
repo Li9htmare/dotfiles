@@ -47,6 +47,8 @@ fi
 
 # sudo apt install libbz2-dev
 # sudo apt install libreadline-dev
+# sudo apt install libsqlite3-dev
+# sudo apt install libssl-dev
 if ! type pyenv &> /dev/null; then
     bash <( \
         curl --fail --location --silent --show-error \
