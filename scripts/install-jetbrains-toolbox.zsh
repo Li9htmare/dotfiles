@@ -20,5 +20,5 @@ if [[ ! -x ${download_path} ]]; then
 fi
 
 if [[ ! ~/bin/jetbrains-toolbox -ef ${download_path} ]]; then
-    ln --symbolic ${download_path} ~/bin
+    ln --symbolic ${download_path} ~/bin/
 fi
