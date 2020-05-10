@@ -3,6 +3,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+set number
+set relativenumber
+
 set surround
 
 nnoremap <silent> <Esc> :nohlsearch<CR>
