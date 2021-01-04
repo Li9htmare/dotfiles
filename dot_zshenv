@@ -38,9 +38,10 @@ manpath=(
 typeset -U path
 path=(
     ~/bin
+    ${path}
     ${HOMEBREW_PREFIX}/bin
     ${HOMEBREW_PREFIX}/sbin
-    ${path}
+    ~/.cargo/bin
     ~/.local/bin
     ~/.yarn/bin
 )
