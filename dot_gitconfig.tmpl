@@ -34,7 +34,7 @@
     email = {{ .email }}
     name = {{ .name }}
 
-[url "git@github.com:"]
-    insteadof = github:
+[credential]
+    helper = cache --timeout=3600
 
 # vim: filetype=gitconfig
