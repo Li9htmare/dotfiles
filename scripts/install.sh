@@ -4,23 +4,17 @@ set -o errexit
 set -o nounset
 
 
-if sudo -l mkdir &> /dev/null; then
-    HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
-else
-    HOMEBREW_PREFIX=${HOME}/.linuxbrew
-fi
-export PATH=${HOME}/bin:${HOME}/.local/bin:${HOMEBREW_PREFIX}/bin:${PATH}
+export PATH=~/bin:${PATH}:~/.cargo/bin:~/.local/bin
 
 
-if ! type chezmoi &> /dev/null; then
-    bash <( \
-        curl --fail --location --silent --show-error \
-            https://git.io/chezmoi \
-    ) -b ${HOME}/bin
+if [[ ! -x ~/bin/chezmoi ]]; then
+    bash <(curl -fsSL https://git.io/chezmoi) -b ~/bin
+    mkdir -p ~/share/zsh/site-functions
+    chezmoi completion zsh --output ~/share/zsh/site-functions/_chezmoi
 fi
 
-if [[ ! -d ${HOME}/.dotfiles ]]; then
-    chezmoi --source ${HOME}/.dotfiles init https://github.com/Li9htmare/dotfiles.git
+if [[ ! -d ~/.dotfiles ]]; then
+    chezmoi --source ~/.dotfiles init https://github.com/Li9htmare/dotfiles.git
 fi
 if ! chezmoi verify; then
     chezmoi diff
@@ -30,19 +24,27 @@ if ! chezmoi verify; then
 fi
 
 
-if ! type brew &> /dev/null; then
-    bash <( \
-        curl --fail --location --silent --show-error \
-            https://raw.githubusercontent.com/Homebrew/install/master/install.sh \
-    )
+if [[ -d /home/linuxbrew/.linuxbrew ]]; then
+    HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+elif [[ -d ~/.linuxbrew ]]; then
+    HOMEBREW_PREFIX=~/.linuxbrew
+else
+    echo 'Please install linuxbrew first'
+    exit 1
 fi
+${HOMEBREW_PREFIX}/bin/brew bundle --global --no-lock
 
-brew bundle --global --no-lock
 
-
-if [[ ! -d ~/.tmux/plugins/tpm ]]; then
-    git clone https://github.com/tmux-plugins/tpm.git ${HOME}/.tmux/plugins/tpm
+if [[ ! -x ~/.cargo/bin/cargo ]]; then
+    bash <(curl -fsSL https://sh.rustup.rs) --no-modify-path
 fi
+cargo install alacritty
+cargo install bat
+cargo install exa
+cargo install fd-find
+cargo install lsd
+cargo install procs
+cargo install ripgrep
 
 
 if [[ $(python --version) != 'Python 3.'* ]]; then
@@ -61,7 +63,7 @@ if ! type pyenv &> /dev/null; then
         curl --fail --location --silent --show-error \
             https://pyenv.run \
     )
-    ln --symbolic ${HOME}/.pyenv/bin/pyenv ${HOME}/bin/
+    ln --symbolic ~/.pyenv/bin/pyenv ~/bin/
 fi
 
 
