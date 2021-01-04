@@ -6,10 +6,11 @@ set -o nounset
 
 export PATH=~/bin:${PATH}:~/.cargo/bin:~/.local/bin
 
+mkdir -p ~/share/zsh/site-functions
+
 
 if [[ ! -x ~/bin/chezmoi ]]; then
     bash <(curl -fsSL https://git.io/chezmoi) -b ~/bin
-    mkdir -p ~/share/zsh/site-functions
     chezmoi completion zsh --output ~/share/zsh/site-functions/_chezmoi
 fi
 
@@ -47,35 +48,22 @@ cargo install procs
 cargo install ripgrep
 
 
-if [[ $(python --version) != 'Python 3.'* ]]; then
-    echo 'Please change default python to python3!'
-    exit 1
-fi
-
-
-# sudo apt install libbz2-dev
-# sudo apt install libffi-dev
-# sudo apt install libreadline-dev
-# sudo apt install libsqlite3-dev
-# sudo apt install libssl-dev
 if ! type pyenv &> /dev/null; then
-    bash <( \
-        curl --fail --location --silent --show-error \
-            https://pyenv.run \
-    )
-    ln --symbolic ~/.pyenv/bin/pyenv ~/bin/
+    bash <(curl -fsSL https://pyenv.run)
+    ln -s ~/.pyenv/bin/pyenv ~/bin/
+    ln -s ~/.pyenv/completions/pyenv.zsh ~/share/zsh/site-functions/_pyenv
 fi
 
 
 # sudo apt install python3-dev
 # sudo apt install python3-pip
 # sudo apt install python3-venv
-if ! type pipx &> /dev/null; then
-    pip install --user pipx
-fi
-pipx install black
-pipx install flake8
-pipx install glances
-pipx install poetry
+# if ! type pipx &> /dev/null; then
+#     pip install --user pipx
+# fi
+# pipx install black
+# pipx install flake8
+# pipx install glances
+# pipx install poetry
 
-poetry config virtualenvs.in-project true
+# poetry config virtualenvs.in-project true

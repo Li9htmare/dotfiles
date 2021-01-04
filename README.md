@@ -1,4 +1,8 @@
 ```
+dnf config-manager --set-enabled powertools
+
+dnf builddep python3
+
 dnf install \
     # Build essentials
     cmake \
