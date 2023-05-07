@@ -1,6 +1,0 @@
-brew "antibody"
-brew "diff-so-fancy"
-brew "fzf"
-brew "jq"
-brew "yarn"
-brew "z"
