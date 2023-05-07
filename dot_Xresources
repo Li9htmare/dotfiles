@@ -1,5 +1,0 @@
-*.font: Iosevka Term SS09:pixelsize=16:antialias=true:autohint=true
-
-Xcursor.size: 16
-
-! vim: filetype=xdefaults

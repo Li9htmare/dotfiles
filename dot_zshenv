@@ -1,33 +1,27 @@
+# vim: filetype=zsh
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
 
 export BLOCK_SIZE=human-readable
 
-if [[ -d /home/linuxbrew/.linuxbrew ]]; then
-    export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
-else
-    export HOMEBREW_PREFIX=~/.linuxbrew
-fi
-export HOMEBREW_CELLAR=${HOMEBREW_PREFIX}/Cellar
-export HOMEBREW_REPOSITORY=${HOMEBREW_PREFIX}/Homebrew
+export NVM_DIR=~/.nvm
+export ZIM_HOME=~/.zim
 
 typeset -U fpath
 fpath=(
     ~/share/zsh/site-functions
-    ${HOMEBREW_PREFIX}/share/zsh/site-functions
     ${fpath}
 )
 
 typeset -TU INFOPATH infopath
 infopath=(
-    ${HOMEBREW_PREFIX}/share/info
     ${infopath}
 )
 
 typeset -U manpath
 manpath=(
-    ${HOMEBREW_PREFIX}/share/man
     ${manpath}
     # If $MANPATH is set, manpath displays its value rather than determining it
     # on the fly. If the colon comes at the end of the value in the variable,
@@ -38,15 +32,10 @@ manpath=(
 typeset -U path
 path=(
     ~/bin
-    ${path}
-    ${HOMEBREW_PREFIX}/bin
-    ${HOMEBREW_PREFIX}/sbin
     ~/.cargo/bin
     ~/.local/bin
-    ~/.yarn/bin
+    ${path}
 )
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
-
-# vim: filetype=zsh

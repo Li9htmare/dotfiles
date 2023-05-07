@@ -1,30 +1,30 @@
-source <(antibody init)
-antibody bundle mafredri/zsh-async
-# sindresorhus/pure must be sourced after mafredri/zsh-async
-antibody bundle sindresorhus/pure
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-completions
-
-setopt INTERACTIVE_COMMENTS
+# vim: filetype=zsh
 
 eval $(dircolors)
 
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+
+
+setopt INTERACTIVE_COMMENTS
+
 source ~/.zsh/alias.zsh
-source ~/.zsh/completion.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zle.zsh
 
-
-source $(brew --prefix)/etc/profile.d/z.sh
-source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+eval "$(zoxide init zsh)"
 
 export PURE_PROMPT_SYMBOL='λ'
 
-xrdb -merge ~/.Xresources
+[[ -x ~/bin/pyenv ]] && eval "$(pyenv init -)"
 
-eval "$(pyenv init -)"
-
-# zsh-users/zsh-syntax-highlighting must be sourced at the very bottom of .zshrc
-antibody bundle zsh-users/zsh-syntax-highlighting
-
-# vim: syntax=zsh
+[[ -f ${NVM_DIR}/nvm.sh ]] && source "${NVM_DIR}/nvm.sh"

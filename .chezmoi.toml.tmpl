@@ -1,8 +1,8 @@
-{{- $email := promptString "email" -}}
-{{- $name := promptString "name" -}}
-
-sourceDir = "{{ .chezmoi.homedir }}/.dotfiles"
-
+{{ $email := promptString "email" -}}
+{{ $name := promptString "name" -}}
 [data]
 email = "{{ $email }}"
 name = "{{ $name }}"
+
+[diff]
+pager = "diff-so-fancy"
