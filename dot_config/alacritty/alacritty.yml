@@ -30,26 +30,29 @@ colors:
     white:   '#ebdbb2'
 
 
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
 env:
   SHELL: /usr/bin/zsh
 
 
-# Font configuration
 font:
   # Normal (roman) font face
   normal:
-    # Font family
-    family: 'Iosevka Term SS09'
+    family: 'Iosevka Term Li9htmare'
 
   # Point size
   size: 12.0
 
 
-# Shell
 shell:
- program: /usr/bin/zsh
- args:
-   - --login
+  program: /usr/bin/zsh
+  args:
+    - --login
+
+window:
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 4
+    y: 0
