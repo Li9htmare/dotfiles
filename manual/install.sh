@@ -26,7 +26,7 @@ fi
 if [[ ! -x ~/bin/kitty ]]; then
     sh <(curl -L https://sw.kovidgoyal.net/kitty/installer.sh) \
         launch=n
-    ln -s ~/.local/kitty.app/bin/kitty ~/bin/
+    ln -sf ~/.local/kitty.app/bin/{kitten,kitty} ~/bin/
 fi
 
 if [[ ! -d ~/.nvm ]]; then
