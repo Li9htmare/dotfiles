@@ -48,6 +48,7 @@ shell:
   args:
     - --login
 
+
 window:
   # Window padding (changes require restart)
   #

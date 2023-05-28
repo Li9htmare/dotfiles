@@ -1,13 +1,14 @@
 #!/bin/bash -eu
 
-export PATH=~/.cargo/bin:~/.local/bin:${PATH}
-
+mkdir -p ~/bin
 mkdir -p ~/share/zsh/site-functions
 
 
 if [[ ! -x ~/.cargo/bin/cargo ]]; then
-    bash <(curl https://sh.rustup.rs -sSf) --no-modify-path
+    sh <(curl -sSf https://sh.rustup.rs) \
+        --no-modify-path
 fi
+export PATH=~/.cargo/bin:${PATH}
 cargo install bat
 cargo install cargo-update
 cargo install exa
@@ -16,19 +17,26 @@ cargo install procs
 cargo install ripgrep
 cargo install zoxide
 
-if ! type nvim &> /dev/null; then
-    curl -fLo ~/bin/nvim https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+if [[ ! -x ~/bin/nvim ]]; then
+    curl -fL -o ~/bin/nvim \
+        https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
     chmod +x ~/bin/nvim
+fi
+
+if [[ ! -x ~/bin/kitty ]]; then
+    sh <(curl -L https://sw.kovidgoyal.net/kitty/installer.sh) \
+        launch=n
+    ln -s ~/.local/kitty.app/bin/kitty ~/bin/
+fi
+
+if [[ ! -d ~/.nvm ]]; then
+    git clone https://github.com/nvm-sh/nvm.git ~/.nvm
 fi
 
 if [[ ! -x ~/bin/pyenv ]]; then
     bash <(curl https://pyenv.run)
     ln -s ~/.pyenv/bin/pyenv ~/bin/
     ln -s ~/.pyenv/completions/pyenv.zsh ~/share/zsh/site-functions/_pyenv
-fi
-
-if [[ ! -f ~/.nvm/nvm.sh ]]; then
-    git clone https://github.com/nvm-sh/nvm.git ~/.nvm
 fi
 
 
