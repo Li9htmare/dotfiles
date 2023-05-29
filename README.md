@@ -5,21 +5,16 @@ sudo chsh -s /usr/bin/zsh
 ## Init
 
 #### Chezmoi
-```
+```bash
 sh <(curl -fsLS get.chezmoi.io) -b ${HOME}/bin
 chezmoi init --apply Li9htmare
 ```
 
 ## Iosevka Custom Build
 
-#### Build ttfautohint
+#### Install ttfautohint
 ```bash
-curl -L -o ~/build/ttfautohint-build.sh \
-    https://raw.githubusercontent.com/source-foundry/ttfautohint-build/v1.8.3.2/ttfautohint-build.sh
-
-# User configuration:
-BUILD=${HOME}/build/ttfautohint-build
-INST=${HOME}/install/ttfautohint
+sudo dnf install ttfautohint
 ```
 
 #### Build Iosevka
