@@ -20,4 +20,4 @@ alias ssh='TERM=screen-256color ssh'
 
 alias umamba='micromamba'
 
-alias vim='echoti smkx; nvim'
+alias vim='nvim'
