@@ -19,7 +19,6 @@ setopt INTERACTIVE_COMMENTS
 
 source ~/.zsh/alias.zsh
 source ~/.zsh/history.zsh
-source ~/.zsh/zle.zsh
 
 eval "$(zoxide init zsh)"
 
