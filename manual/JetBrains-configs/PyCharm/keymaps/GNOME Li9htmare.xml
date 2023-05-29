@@ -1,8 +1,8 @@
-<keymap version="1" name="GNOME copy" parent="Default for GNOME">
+<keymap version="1" name="GNOME Li9htmare" parent="Default for GNOME">
   <action id="ManageRecentProjects">
     <keyboard-shortcut first-keystroke="shift ctrl alt o" />
   </action>
-  <action id="Tool_External Tools_Black">
+  <action id="Tool_External Tools_pyfmt">
     <keyboard-shortcut first-keystroke="shift ctrl alt p" />
   </action>
 </keymap>

@@ -65,3 +65,12 @@ sudo dnf install \
 #### Kitty
 - Command: `${HOME}/bin/kitty`
 - Shortcut: `Super+T`
+
+
+## JetBrains Plugins
+
+#### PyCharm
+- .ignore
+- CSV Editor
+- IdeaVim
+- Nord
