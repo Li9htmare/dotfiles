@@ -25,7 +25,7 @@ git clone --depth=1 \
 cd ~/build/Iosevka
 npm install
 
-ln -s ~/.local/share/chezmoi/manual/iosevka-private-build-plans.toml ./private-build-plans.toml
+ln -s $(chezmoi source-path)/manual/iosevka-private-build-plans.toml ./private-build-plans.toml
 npm run build -- super-ttc::iosevka-li9htmare
 mkdir -p ~/.local/share/fonts
 cp ./dist/.super-ttc/iosevka-li9htmare.ttc ~/.local/share/fonts/
