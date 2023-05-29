@@ -28,3 +28,32 @@ mkdir -p ~/.local/share/fonts
 cp ./dist/.super-ttc/iosevka-li9htmare.ttc ~/.local/share/fonts/
 fc-cache -fv
 ```
+
+## Rofi
+
+### Dependencies
+```
+sudo dnf config-manager --set-enabled crb
+
+# Building
+sudo dnf install \
+    check-devel
+
+# External libs
+sudo dnf install \
+    gdk-pixbuf2-devel \
+    glib2-devel \
+    libxcb-devel \
+    libxkbcommon-devel \
+    libxkbcommon-x11-devel \
+    pango-devel \
+    startup-notification-devel \
+    xcb-util-devel \
+    xcb-util-cursor-devel \
+    xcb-util-wm-devel
+```
+
+### Shortcut
+- Name: Rofi
+- Command: `${HOME}/bin/rofi -show`
+- Shortcut: `Super+W`

@@ -1,0 +1,9 @@
+@theme "gruvbox-light-soft"
+
+configuration {
+    modi: [window,drun,run,ssh];
+    show-icons: true;
+    window {
+        close-on-delete: false;
+    }
+}
