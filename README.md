@@ -53,7 +53,15 @@ sudo dnf install \
     xcb-util-wm-devel
 ```
 
-### Shortcut
-- Name: Rofi
+## Keyboard Shortcuts
+
+#### Home folder
+- Shortcut: `Super+E`
+
+#### Rofi
 - Command: `${HOME}/bin/rofi -show`
 - Shortcut: `Super+W`
+
+#### Kitty
+- Command: `${HOME}/bin/kitty`
+- Shortcut: `Super+T`
