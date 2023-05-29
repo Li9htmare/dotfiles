@@ -61,7 +61,6 @@ colorscheme gruvbox
 let g:airline_powerline_fonts = 1
 
 nnoremap <silent> <Esc> :nohlsearch<CR>
-nnoremap <C-c> "+y
 
 let mapleader = ' '
 
@@ -76,5 +75,6 @@ nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>w <C-W>
 nnoremap <Leader>ww :Windows<CR>
 
+vnoremap <C-c> "+y
 vnoremap < <gv
 vnoremap > >gv
