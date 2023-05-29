@@ -17,16 +17,24 @@ cargo install procs
 cargo install ripgrep
 cargo install zoxide
 
-if [[ ! -x ~/bin/nvim ]]; then
-    curl -fL -o ~/bin/nvim \
-        https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-    chmod +x ~/bin/nvim
+
+if [[ ! -x ~/bin/flameshot ]]; then
+    curl -fL -o ~/bin/flameshot \
+        $(curl -s https://api.github.com/repos/flameshot-org/flameshot/releases/latest \
+            | grep -Po '(?<="browser_download_url": ")https://[^"]+/Flameshot-[0-9.]+\.x86_64\.AppImage(?=")')
+    chmod +x ~/bin/flameshot
 fi
 
 if [[ ! -x ~/bin/kitty ]]; then
     sh <(curl -L https://sw.kovidgoyal.net/kitty/installer.sh) \
         launch=n
     ln -sf ~/.local/kitty.app/bin/{kitten,kitty} ~/bin/
+fi
+
+if [[ ! -x ~/bin/nvim ]]; then
+    curl -fL -o ~/bin/nvim \
+        https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+    chmod +x ~/bin/nvim
 fi
 
 if [[ ! -d ~/.nvm ]]; then

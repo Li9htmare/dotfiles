@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Flameshot
+Type=Application
+Icon=flameshot
+
+Exec={{ .chezmoi.homeDir }}/bin/flameshot
+Terminal=false
+Actions=Configure;Launcher;
+
+StartupWMClass=flameshot
+
+[Desktop Action Configure]
+Name=Configure
+Exec={{ .chezmoi.homeDir }}/bin/flameshot config
+
+[Desktop Action Launcher]
+Name=Open launcher
+Exec={{ .chezmoi.homeDir }}/bin/flameshot launcher
